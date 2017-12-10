@@ -1,0 +1,69 @@
+var _elm_lang$elm_architecture_tutorial$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'Tick') {
+			return {ctor: '_Tuple2', _0: model + 1, _1: _elm_lang$core$Platform_Cmd$none};
+		} else {
+			return {ctor: '_Tuple2', _0: 0, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _elm_lang$elm_architecture_tutorial$Main$init = {ctor: '_Tuple2', _0: 0, _1: _elm_lang$core$Platform_Cmd$none};
+var _elm_lang$elm_architecture_tutorial$Main$Refresh = {ctor: 'Refresh'};
+var _elm_lang$elm_architecture_tutorial$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$button,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(_elm_lang$elm_architecture_tutorial$Main$Refresh),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Refresh'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$Basics$toString(
+									_elm_lang$core$Basics$round(model) - A2(
+										_elm_lang$core$Basics_ops['%'],
+										_elm_lang$core$Basics$round(model),
+										60)),
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									' minutes, ',
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										_elm_lang$core$Basics$toString(
+											A2(
+												_elm_lang$core$Basics_ops['%'],
+												_elm_lang$core$Basics$round(model),
+												60)),
+										' seconds')))),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _elm_lang$elm_architecture_tutorial$Main$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _elm_lang$elm_architecture_tutorial$Main$subscriptions = function (model) {
+	return A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _elm_lang$elm_architecture_tutorial$Main$Tick);
+};
+var _elm_lang$elm_architecture_tutorial$Main$main = _elm_lang$html$Html$program(
+	{init: _elm_lang$elm_architecture_tutorial$Main$init, view: _elm_lang$elm_architecture_tutorial$Main$view, update: _elm_lang$elm_architecture_tutorial$Main$update, subscriptions: _elm_lang$elm_architecture_tutorial$Main$subscriptions})();
